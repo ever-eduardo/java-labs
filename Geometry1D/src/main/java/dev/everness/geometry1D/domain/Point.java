@@ -1,5 +1,7 @@
 package dev.everness.geometry1D.domain;
 
+import java.util.Objects;
+
 public class Point extends Entity {
     private double location;
 
@@ -13,16 +15,21 @@ public class Point extends Entity {
 
     @Override
     public boolean equals(Object o) {
-        return false;
+        if (this == o) return true;
+        if (!(o instanceof Point point)) return false;
+        return Double.compare(point.location, location) == 0 && getId().equals(point.getId());
     }
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(location, getId());
     }
 
     @Override
     public String toString() {
-        return null;
+        return "Point{" +
+                "location=" + location +
+                ", id='" + getId() + '\'' +
+                '}';
     }
 }

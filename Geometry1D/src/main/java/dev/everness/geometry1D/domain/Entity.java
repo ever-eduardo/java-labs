@@ -7,6 +7,10 @@ public abstract class Entity {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public abstract boolean equals(Object o);
 
