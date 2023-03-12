@@ -6,6 +6,7 @@ public class Point extends Entity {
     private double location;
 
     public Point(double location) {
+        super();
         this.location = location;
     }
 
