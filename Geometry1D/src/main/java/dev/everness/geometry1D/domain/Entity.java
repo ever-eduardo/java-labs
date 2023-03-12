@@ -1,7 +1,7 @@
 package dev.everness.geometry1D.domain;
 
 public abstract class Entity {
-    private String id;
+    private String id = "";
 
     public String getId() {
         return id;
