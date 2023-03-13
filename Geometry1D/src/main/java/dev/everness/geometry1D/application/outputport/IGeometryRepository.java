@@ -6,6 +6,5 @@ import java.util.Set;
 
 public interface IGeometryRepository {
     Set<Entity> getAll();
-
     void delete(Entity entity);
 }
