@@ -42,16 +42,6 @@ public class GeometryService implements ICRUDGeometry, IOperationsGeometry {
     }
 
     @Override
-    public boolean isPoint(Entity entity) {
-        return entity instanceof Point;
-    }
-
-    @Override
-    public boolean isLine(Entity entity) {
-        return entity instanceof Line;
-    }
-
-    @Override
     public boolean isEqual(Entity left, Entity right) {
         return left.equals(right);
     }
