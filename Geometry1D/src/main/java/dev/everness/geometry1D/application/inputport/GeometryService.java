@@ -53,6 +53,7 @@ public class GeometryService implements ICRUDGeometry, IOperationsGeometry {
             }
             return this.checkLineIntersection(rightLine, leftLine);
         }
+        return false;
     }
 
     private boolean checkPointInLine(Point point, Line line) {
