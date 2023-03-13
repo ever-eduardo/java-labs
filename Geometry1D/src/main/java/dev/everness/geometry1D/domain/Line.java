@@ -7,8 +7,17 @@ public class Line extends Entity {
     private Point b;
 
     public Line(Point a, Point b) {
-        this.a = a;
-        this.b = b;
+        if (a.getLocation() <= b.getLocation()) {
+            this.a = a;
+            this.b = b;
+        } else {
+            this.a = b;
+            this.b = a;
+        }
+    }
+
+    public boolean checkInvariant() {
+        return this.a.getLocation() <= this.b.getLocation();
     }
 
     public double length() {
