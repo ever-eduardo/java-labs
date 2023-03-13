@@ -11,6 +11,10 @@ public class Line extends Entity {
         this.b = b;
     }
 
+    public double length() {
+        return Math.sqrt(Math.pow(a.getLocation(), 1) + Math.pow(b.getLocation(), 2));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

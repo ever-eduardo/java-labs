@@ -6,12 +6,15 @@ public class Point extends Entity {
     private double location;
 
     public Point(double location) {
-        super();
         this.location = location;
     }
 
     public Point() {
         this.location = 0;
+    }
+
+    public double getLocation() {
+        return location;
     }
 
     @Override
