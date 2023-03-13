@@ -1,5 +1,6 @@
 package dev.everness.geometry1D.application.inputport;
 
+import dev.everness.geometry1D.application.outputport.IGeometryRepository;
 import dev.everness.geometry1D.application.usecases.ICRUDGeometry;
 import dev.everness.geometry1D.application.usecases.IOperationsGeometry;
 import dev.everness.geometry1D.domain.Entity;
@@ -9,9 +10,15 @@ import dev.everness.geometry1D.domain.Point;
 import java.util.Set;
 
 public class GeometryService implements ICRUDGeometry, IOperationsGeometry {
+    private IGeometryRepository repository;
+
+    public GeometryService(IGeometryRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public Set<Entity> getAll() {
-        return null;
+        return repository.getAll();
     }
 
     @Override
@@ -26,7 +33,7 @@ public class GeometryService implements ICRUDGeometry, IOperationsGeometry {
 
     @Override
     public void deleteEntity(Entity entity) {
-
+        repository.delete(entity);
     }
 
     @Override
