@@ -9,10 +9,6 @@ public class Point extends Entity {
         this.location = location;
     }
 
-    public Point() {
-        this.location = 0;
-    }
-
     public double getLocation() {
         return location;
     }
@@ -31,9 +27,16 @@ public class Point extends Entity {
 
     @Override
     public String toString() {
-        return "Point{" +
-                "location=" + location +
-                ", id='" + getId() + '\'' +
-                '}';
+        return "Point(" +
+                location +
+                ')';
+    }
+
+    @Override
+    public String toInspectString() {
+        return "Point(" +
+                "id='" + getId() + '\'' +
+                ", location=" + location +
+                ')';
     }
 }

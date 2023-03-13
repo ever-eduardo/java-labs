@@ -14,6 +14,9 @@ public class Line extends Entity {
             this.a = b;
             this.b = a;
         }
+        if (!this.checkInvariant()) {
+            throw new RuntimeException("Line does not fulfill its invariant");
+        }
     }
 
     public boolean checkInvariant() {
@@ -46,10 +49,11 @@ public class Line extends Entity {
 
     @Override
     public String toString() {
-        return "Line{" +
-                "id='" + getId() + '\'' +
-                ", a=" + a +
-                ", b=" + b +
-                '}';
+        return String.format("Line(%s, %s)", a, b);
+    }
+
+    @Override
+    public String toInspectString() {
+        return String.format("Line(id='%s', a=%s, b=%s)", getId(), a.toInspectString(), b.toInspectString());
     }
 }

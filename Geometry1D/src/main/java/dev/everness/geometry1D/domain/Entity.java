@@ -1,14 +1,14 @@
 package dev.everness.geometry1D.domain;
 
 public abstract class Entity {
-    private String id = "";
+    private String id;
+
+    public Entity() {
+        this.id = UUIDGeneratorService.generate();
+    }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -19,4 +19,6 @@ public abstract class Entity {
 
     @Override
     public abstract String toString();
+
+    public abstract String toInspectString();
 }
