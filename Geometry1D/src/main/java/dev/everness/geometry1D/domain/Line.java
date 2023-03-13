@@ -15,6 +15,14 @@ public class Line extends Entity {
         return Math.sqrt(Math.pow(a.getLocation(), 1) + Math.pow(b.getLocation(), 2));
     }
 
+    public Point getA() {
+        return a;
+    }
+
+    public Point getB() {
+        return b;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
