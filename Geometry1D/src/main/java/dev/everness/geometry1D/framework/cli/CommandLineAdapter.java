@@ -1,27 +1,30 @@
 package dev.everness.geometry1D.framework.cli;
+import dev.everness.geometry1D.application.usecases.IService;
 
 import java.io.Console;
 
 public class CommandLineAdapter {
     private Console console;
     private boolean running;
-    private static final String WELCOME = """
-            Welcome to Geometry 1D
-            """;
-    private static final String PROMPT = " geometry > ";
 
-    public CommandLineAdapter() throws RuntimeException {
+    private IService service;
+
+    public CommandLineAdapter(IService service) throws RuntimeException {
         console = System.console();
         if (console == null) throw new RuntimeException("No Console found in your system");
         this.running = true;
+        this.service = service;
     }
 
     public void run() {
-        System.out.print(CommandLineAdapter.WELCOME);
+        System.out.print(Command.WELCOME);
         while (running) {
-            System.out.print(CommandLineAdapter.PROMPT);
+            System.out.print(Command.PROMPT);
             final String input = console.readLine();
-            System.out.println(input);
+            switch (input) {
+                case Command.EXIT -> running = false;
+                default -> System.out.println(input);
+            }
         }
     }
 }
