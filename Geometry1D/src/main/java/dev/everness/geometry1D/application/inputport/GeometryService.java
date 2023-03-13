@@ -38,7 +38,41 @@ public class GeometryService implements ICRUDGeometry, IOperationsGeometry {
 
     @Override
     public boolean intersect(Entity left, Entity right) {
-        return false;
+        if (left instanceof Point leftPoint && right instanceof Point rightPoint) {
+            return leftPoint.getLocation() == rightPoint.getLocation();
+        }
+        if (left instanceof Point point && right instanceof Line line) {
+            return this.checkPointInLine(point, line);
+        }
+        if (left instanceof Line line && right instanceof Point point) {
+            return this.checkPointInLine(point, line);
+        }
+        if (left instanceof Line leftLine && right instanceof Line rightLine) {
+            if (leftLine.getA().getLocation() <= rightLine.getA().getLocation()) {
+                return this.checkLineIntersection(leftLine, rightLine);
+            }
+            return this.checkLineIntersection(rightLine, leftLine);
+        }
+    }
+
+    private boolean checkPointInLine(Point point, Line line) {
+        return line.checkInvariant()
+                && line.getA().getLocation() <= point.getLocation()
+                && point.getLocation() <= line.getB().getLocation();
+    }
+
+    private boolean checkLineIntersection(Line left, Line right) {
+        return right.getA().getLocation() <= left.getB().getLocation();
+    }
+
+    @Override
+    public boolean isPoint(Entity entity) {
+        return entity instanceof Point;
+    }
+
+    @Override
+    public boolean isLine(Entity entity) {
+        return entity instanceof Line;
     }
 
     @Override
