@@ -1,15 +1,17 @@
 package dev.everness.geometry1D.domain.entity;
 
+import dev.everness.geometry1D.domain.value.CoordinateSystemLocation;
+
 import java.util.Objects;
 
 public class Point extends Entity {
-    private double location;
+    private CoordinateSystemLocation location;
 
-    public Point(double location) {
+    public Point(CoordinateSystemLocation location) {
         this.location = location;
     }
 
-    public double getLocation() {
+    public CoordinateSystemLocation getLocation() {
         return location;
     }
 
@@ -17,7 +19,7 @@ public class Point extends Entity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Point point)) return false;
-        return Double.compare(point.location, location) == 0 && getId().equals(point.getId());
+        return location.equals(point.getLocation());
     }
 
     @Override
@@ -38,5 +40,10 @@ public class Point extends Entity {
                 "id='" + getId() + '\'' +
                 ", location=" + location +
                 ')';
+    }
+
+    @Override
+    public boolean isSelf(Entity other) {
+        return getId().equals(other.getId());
     }
 }
