@@ -11,15 +11,11 @@ public class Point extends Entity {
         this.location = location;
     }
 
-    public CoordinateSystemLocation getLocation() {
-        return location;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Point point)) return false;
-        return location.equals(point.getLocation());
+        return location.equals(point.location);
     }
 
     @Override
@@ -45,5 +41,21 @@ public class Point extends Entity {
     @Override
     public boolean isSelf(Entity other) {
         return getId().equals(other.getId());
+    }
+
+    public boolean lessThan(Point other) {
+        return location.lessThan(other.location);
+    }
+
+    public boolean lessEqual(Point other) {
+        return location.lessEqual(other.location);
+    }
+
+    public boolean greaterThan(Point other) {
+        return location.greaterThan(other.location);
+    }
+
+    public boolean greaterEqual(Point other) {
+        return location.greaterEqual(other.location);
     }
 }
