@@ -1,4 +1,4 @@
-package dev.everness.geometry1D.domain;
+package dev.everness.geometry1D.domain.service;
 
 import java.util.UUID;
 

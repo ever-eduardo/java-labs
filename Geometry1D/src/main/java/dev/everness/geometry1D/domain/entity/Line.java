@@ -1,4 +1,4 @@
-package dev.everness.geometry1D.domain;
+package dev.everness.geometry1D.domain.entity;
 
 import java.util.Objects;
 
@@ -53,7 +53,7 @@ public class Line extends Entity {
     }
 
     @Override
-    public String toInspectString() {
-        return String.format("Line(id='%s', a=%s, b=%s)", getId(), a.toInspectString(), b.toInspectString());
+    public String inspect() {
+        return String.format("Line(id='%s', a=%s, b=%s)", getId(), a.inspect(), b.inspect());
     }
 }

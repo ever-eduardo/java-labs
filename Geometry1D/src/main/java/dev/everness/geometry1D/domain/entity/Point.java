@@ -1,4 +1,4 @@
-package dev.everness.geometry1D.domain;
+package dev.everness.geometry1D.domain.entity;
 
 import java.util.Objects;
 
@@ -33,7 +33,7 @@ public class Point extends Entity {
     }
 
     @Override
-    public String toInspectString() {
+    public String inspect() {
         return "Point(" +
                 "id='" + getId() + '\'' +
                 ", location=" + location +

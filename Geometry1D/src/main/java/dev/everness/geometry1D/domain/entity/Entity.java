@@ -1,4 +1,6 @@
-package dev.everness.geometry1D.domain;
+package dev.everness.geometry1D.domain.entity;
+
+import dev.everness.geometry1D.domain.service.UUIDGeneratorService;
 
 import java.util.UUID;
 
@@ -22,5 +24,5 @@ public abstract class Entity {
     @Override
     public abstract String toString();
 
-    public abstract String toInspectString();
+    public abstract String inspect();
 }
