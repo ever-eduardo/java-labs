@@ -1,13 +1,15 @@
 package dev.everness.geometry1D.domain;
 
+import java.util.UUID;
+
 public abstract class Entity {
-    private String id;
+    private UUID id;
 
     public Entity() {
         this.id = UUIDGeneratorService.generate();
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
