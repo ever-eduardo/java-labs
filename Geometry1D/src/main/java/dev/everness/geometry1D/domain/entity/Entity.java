@@ -25,4 +25,6 @@ public abstract class Entity {
     public abstract String toString();
 
     public abstract String inspect();
+
+    public abstract boolean isSelf(Entity other);
 }
