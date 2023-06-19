@@ -1,8 +1,8 @@
 package dev.everness.geometry1D.application.usecases;
 
-import dev.everness.geometry1D.domain.Entity;
-import dev.everness.geometry1D.domain.Line;
-import dev.everness.geometry1D.domain.Point;
+import dev.everness.geometry1D.domain.entity.Entity;
+import dev.everness.geometry1D.domain.entity.Line;
+import dev.everness.geometry1D.domain.entity.Point;
 
 import java.util.Set;
 

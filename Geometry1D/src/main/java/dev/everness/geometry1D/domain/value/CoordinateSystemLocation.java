@@ -19,6 +19,8 @@ public class CoordinateSystemLocation extends Value {
         return new CoordinateSystemLocation(location);
     }
 
+    public
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

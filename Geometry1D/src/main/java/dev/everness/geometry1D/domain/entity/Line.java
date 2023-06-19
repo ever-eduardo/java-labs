@@ -3,57 +3,68 @@ package dev.everness.geometry1D.domain.entity;
 import java.util.Objects;
 
 public class Line extends Entity {
-    private Point a;
-    private Point b;
+    private Point pointLeft;
+    private Point pointRight;
 
-    public Line(Point a, Point b) {
-        if (a.getLocation() <= b.getLocation()) {
-            this.a = a;
-            this.b = b;
+    private Line(Point pointLeft, Point pointRight) {
+        this.pointLeft = pointLeft;
+        this.pointRight = pointRight;
+    }
+
+    public static Line createLine(Point pointLeft, Point pointRight) {
+        Point left, right;
+        if (pointLeft.lessEqual(pointRight)) {
+            left = pointLeft;
+            right = pointRight;
         } else {
-            this.a = b;
-            this.b = a;
+            left = pointRight;
+            right = pointLeft;
         }
-        if (!this.checkInvariant()) {
-            throw new RuntimeException("Line does not fulfill its invariant");
-        }
+        Line line = new Line(left, right);
+        line.checkInvariant();
+        return line;
     }
 
     public boolean checkInvariant() {
-        return this.a.getLocation() <= this.b.getLocation();
+        return pointLeft.lessEqual(pointRight);
     }
 
     public double length() {
-        return Math.sqrt(Math.pow(a.getLocation(), 1) + Math.pow(b.getLocation(), 2));
+        return Math.sqrt(Math.pow(pointLeft.getLocation(), 1) + Math.pow(pointRight.getLocation(), 2));
     }
 
-    public Point getA() {
-        return a;
+    public Point getPointLeft() {
+        return pointLeft;
     }
 
-    public Point getB() {
-        return b;
+    public Point getPointRight() {
+        return pointRight;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Line line)) return false;
-        return getId().equals(line.getId()) && a.equals(line.a) && b.equals(line.b);
+        return  pointLeft.equals(line.pointLeft) && pointRight.equals(line.pointRight);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), a, b);
+        return Objects.hash(getId(), pointLeft, pointRight);
     }
 
     @Override
     public String toString() {
-        return String.format("Line(%s, %s)", a, b);
+        return String.format("Line(%s, %s)", pointLeft, pointRight);
     }
 
     @Override
     public String inspect() {
-        return String.format("Line(id='%s', a=%s, b=%s)", getId(), a.inspect(), b.inspect());
+        return String.format("Line(id='%s', a=%s, b=%s)", getId(), pointLeft.inspect(), pointRight.inspect());
+    }
+
+    @Override
+    public boolean isSelf(Entity other) {
+        return getId().equals(other.getId());
     }
 }

@@ -2,9 +2,9 @@ package dev.everness.geometry1D.application.inputport;
 
 import dev.everness.geometry1D.application.outputport.IGeometryRepository;
 import dev.everness.geometry1D.application.usecases.IService;
-import dev.everness.geometry1D.domain.Entity;
-import dev.everness.geometry1D.domain.Line;
-import dev.everness.geometry1D.domain.Point;
+import dev.everness.geometry1D.domain.entity.Entity;
+import dev.everness.geometry1D.domain.entity.Line;
+import dev.everness.geometry1D.domain.entity.Point;
 
 import java.util.Set;
 
@@ -47,7 +47,7 @@ public class GeometryService implements IService {
             return this.checkPointInLine(point, line);
         }
         if (left instanceof Line leftLine && right instanceof Line rightLine) {
-            if (leftLine.getA().getLocation() <= rightLine.getA().getLocation()) {
+            if (leftLine.getPointLeft().getLocation() <= rightLine.getPointLeft().getLocation()) {
                 return this.checkLineIntersection(leftLine, rightLine);
             }
             return this.checkLineIntersection(rightLine, leftLine);
@@ -57,12 +57,12 @@ public class GeometryService implements IService {
 
     private boolean checkPointInLine(Point point, Line line) {
         return line.checkInvariant()
-                && line.getA().getLocation() <= point.getLocation()
-                && point.getLocation() <= line.getB().getLocation();
+                && line.getPointLeft().getLocation() <= point.getLocation()
+                && point.getLocation() <= line.getPointRight().getLocation();
     }
 
     private boolean checkLineIntersection(Line left, Line right) {
-        return right.getA().getLocation() <= left.getB().getLocation();
+        return right.getPointLeft().getLocation() <= left.getPointRight().getLocation();
     }
 
     @Override
@@ -76,7 +76,7 @@ public class GeometryService implements IService {
     }
 
     @Override
-    public boolean isEqual(Entity left, Entity right) {
+    public boolean haveSameValue(Entity left, Entity right) {
         return left.equals(right);
     }
 }

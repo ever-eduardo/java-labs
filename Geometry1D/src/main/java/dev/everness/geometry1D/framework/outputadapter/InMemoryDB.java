@@ -1,7 +1,7 @@
 package dev.everness.geometry1D.framework.outputadapter;
 
 import dev.everness.geometry1D.application.outputport.IGeometryRepository;
-import dev.everness.geometry1D.domain.Entity;
+import dev.everness.geometry1D.domain.entity.Entity;
 
 import java.util.HashSet;
 import java.util.Set;
